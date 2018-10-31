@@ -167,6 +167,20 @@ class Application(ttk.Frame):
         self.ec5curfreq.pack(side=tk.LEFT, padx=3, pady=3)
 
 
+        ## Browser -----------------------------##
+        self.browser = ttk.Frame(relief=tk.RIDGE)
+        self.browser.pack(fill=tk.X, expand=1)
+
+        ### Current Frequency
+        block = ttk.Frame(self.browser, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lbrow = ttk.Label(block, text="Current Folder:")
+        self.lbrow.pack(side=tk.TOP, padx=3, pady=3)
+
+
+        # TODO: Add min, max, control options, controls, temperatures
+
         self.start_updates()
 
     def start_updates(self):
