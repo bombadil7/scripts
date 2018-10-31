@@ -79,9 +79,7 @@ class Application(ttk.Frame):
         block = ttk.Frame(self.cpu0, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
-        self.lc0curfreq = ttk.Label(block, text="CPU0 Current Freq:")
-        self.lc0curfreq.pack(side=tk.LEFT, padx=3, pady=3)
-
+        ttk.Label(block, text="CPU0 Current Freq:").pack(side=tk.LEFT, padx=3, pady=3)
         self.c0curfreqVar = tk.StringVar()
         self.ec0curfreq = ttk.Entry(block, width=9, textvariable=self.c0curfreqVar)
         self.ec0curfreq.pack(side=tk.LEFT, padx=3, pady=3)
@@ -95,9 +93,7 @@ class Application(ttk.Frame):
         block = ttk.Frame(self.cpu1, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
-        self.lc1curfreq = ttk.Label(block, text="CPU1 Current Freq:")
-        self.lc1curfreq.pack(side=tk.LEFT, padx=3, pady=3)
-
+        ttk.Label(block, text="CPU1 Current Freq:").pack(side=tk.LEFT, padx=3, pady=3)
         self.c1curfreqVar = tk.StringVar()
         self.ec1curfreq = ttk.Entry(block, width=9, textvariable=self.c1curfreqVar)
         self.ec1curfreq.pack(side=tk.LEFT, padx=3, pady=3)
@@ -111,9 +107,7 @@ class Application(ttk.Frame):
         block = ttk.Frame(self.cpu2, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
-        self.lc2curfreq = ttk.Label(block, text="CPU2 Current Freq:")
-        self.lc2curfreq.pack(side=tk.LEFT, padx=3, pady=3)
-
+        ttk.Label(block, text="CPU2 Current Freq:").pack(side=tk.LEFT, padx=3, pady=3)
         self.c2curfreqVar = tk.StringVar()
         self.ec2curfreq = ttk.Entry(block, width=9, textvariable=self.c2curfreqVar)
         self.ec2curfreq.pack(side=tk.LEFT, padx=3, pady=3)
@@ -127,9 +121,7 @@ class Application(ttk.Frame):
         block = ttk.Frame(self.cpu3, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
-        self.lc3curfreq = ttk.Label(block, text="CPU3 Current Freq:")
-        self.lc3curfreq.pack(side=tk.LEFT, padx=3, pady=3)
-
+        ttk.Label(block, text="CPU3 Current Freq:").pack(side=tk.LEFT, padx=3, pady=3)
         self.c3curfreqVar = tk.StringVar()
         self.ec3curfreq = ttk.Entry(block, width=9, textvariable=self.c3curfreqVar)
         self.ec3curfreq.pack(side=tk.LEFT, padx=3, pady=3)
@@ -143,9 +135,7 @@ class Application(ttk.Frame):
         block = ttk.Frame(self.cpu4, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
-        self.lc4curfreq = ttk.Label(block, text="CPU4 Current Freq:")
-        self.lc4curfreq.pack(side=tk.LEFT, padx=3, pady=3)
-
+        ttk.Label(block, text="CPU4 Current Freq:").pack(side=tk.LEFT, padx=3, pady=3)
         self.c4curfreqVar = tk.StringVar()
         self.ec4curfreq = ttk.Entry(block, width=9, textvariable=self.c4curfreqVar)
         self.ec4curfreq.pack(side=tk.LEFT, padx=3, pady=3)
@@ -159,9 +149,7 @@ class Application(ttk.Frame):
         block = ttk.Frame(self.cpu5, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
-        self.lc5curfreq = ttk.Label(block, text="CPU5 Current Freq:")
-        self.lc5curfreq.pack(side=tk.LEFT, padx=3, pady=3)
-
+        ttk.Label(block, text="CPU5 Current Freq:").pack(side=tk.LEFT, padx=3, pady=3)
         self.c5curfreqVar = tk.StringVar()
         self.ec5curfreq = ttk.Entry(block, width=9, textvariable=self.c5curfreqVar)
         self.ec5curfreq.pack(side=tk.LEFT, padx=3, pady=3)
