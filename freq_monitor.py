@@ -21,6 +21,8 @@ class Application(ttk.Frame):
         self.style = ttk.Style()
         self.style.theme_use("default")
 
+
+        ## Overview ----------------------------##
         self.info = ttk.Frame(relief=tk.RIDGE)
         self.info.pack(fill=tk.X, expand=1)
         
@@ -69,6 +71,37 @@ class Application(ttk.Frame):
         self.enow.pack(side=tk.LEFT, padx=3, pady=3)
 
 
+        ## CPU0 --------------------------------##
+        self.cpu0 = ttk.Frame(relief=tk.RIDGE)
+        self.cpu0.pack(fill=tk.X, expand=1)
+        
+        ### Current Frequency 
+        block = ttk.Frame(self.cpu0, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lc0curfreq = ttk.Label(block, text="CPU0 Current Freq:")
+        self.lc0curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.c0curfreqVar = tk.StringVar()
+        self.ec0curfreq = ttk.Entry(block, width=9, textvariable=self.c0curfreqVar)
+        self.ec0curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+
+        ## CPU1 --------------------------------##
+        self.cpu1 = ttk.Frame(relief=tk.RIDGE)
+        self.cpu1.pack(fill=tk.X, expand=1)
+        
+        ### Current Frequency 
+        block = ttk.Frame(self.cpu1, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lc1curfreq = ttk.Label(block, text="CPU1 Current Freq:")
+        self.lc1curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.c1curfreqVar = tk.StringVar()
+        self.ec1curfreq = ttk.Entry(block, width=9, textvariable=self.c1curfreqVar)
+        self.ec1curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
         self.start_updates()
 
     def start_updates(self):
@@ -85,6 +118,14 @@ class Application(ttk.Frame):
                 self.offlineVar.set(device.read().replace('\n', ''))
             now = datetime.now()
             self.nowVar.set(now.strftime("%H:%M:%S"))
+
+            with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq') as device:
+                self.c0curfreqVar.set(device.read().replace('\n', ''))
+
+            with open('/sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq') as device:
+                self.c1curfreqVar.set(device.read().replace('\n', ''))
+
+
             sleep(1)
 
 
