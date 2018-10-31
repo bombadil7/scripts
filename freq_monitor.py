@@ -24,20 +24,26 @@ class Application(ttk.Frame):
         self.info.pack(fill=tk.X, expand=1)
         
         ### Present
-        self.lpresent = ttk.Label(self.info, text="Present Cores:")
-        self.lpresent.grid(row=0, column=0, padx=10, pady=10)
+        block = ttk.Frame(self.info, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lpresent = ttk.Label(block, text="Present Cores:")
+        self.lpresent.pack(side=tk.LEFT, padx=3, pady=3)
 
         self.presentVar = tk.StringVar()
-        self.epresent = ttk.Entry(self.info, width=5, textvariable=self.presentVar)
-        self.epresent.grid(row=0, column=1, padx=10, pady=10)
+        self.epresent = ttk.Entry(block, width=5, textvariable=self.presentVar)
+        self.epresent.pack(side=tk.LEFT, padx=3, pady=3)
 
         ### Online
-        self.lonline = ttk.Label(self.info, text="Online Cores:")
-        self.lonline.grid(row=0, column=2, padx=10, pady=10)
+        block = ttk.Frame(self.info, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lonline = ttk.Label(block, text="Online Cores:")
+        self.lonline.pack(side=tk.LEFT, padx=3, pady=3)
 
         self.onlineVar = tk.StringVar()
-        self.eonline = ttk.Entry(self.info, width=5, textvariable=self.onlineVar)
-        self.eonline.grid(row=0, column=3, padx=10, pady=10)
+        self.eonline = ttk.Entry(block, width=5, textvariable=self.onlineVar)
+        self.eonline.pack(side=tk.LEFT, padx=3, pady=3)
 
         self.start_updates()
 
