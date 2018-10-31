@@ -3,8 +3,8 @@ Read  and possibly control active processor cores,
 frequencies, temperatures etc.
 """
 
-import tkinter as tk 
-from tkinter import ttk 
+import tkinter as tk
+from tkinter import ttk
 from time import sleep
 from threading import Thread
 from datetime import datetime
@@ -25,7 +25,7 @@ class Application(ttk.Frame):
         ## Overview ----------------------------##
         self.info = ttk.Frame(relief=tk.RIDGE)
         self.info.pack(fill=tk.X, expand=1)
-        
+
         ### Present
         block = ttk.Frame(self.info, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
@@ -59,7 +59,7 @@ class Application(ttk.Frame):
         self.eoffline = ttk.Entry(block, width=5, textvariable=self.offlineVar)
         self.eoffline.pack(side=tk.LEFT, padx=3, pady=3)
 
-        ### Time 
+        ### Time
         block = ttk.Frame(self.info, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
@@ -74,8 +74,8 @@ class Application(ttk.Frame):
         ## CPU0 --------------------------------##
         self.cpu0 = ttk.Frame(relief=tk.RIDGE)
         self.cpu0.pack(fill=tk.X, expand=1)
-        
-        ### Current Frequency 
+
+        ### Current Frequency
         block = ttk.Frame(self.cpu0, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
@@ -90,8 +90,8 @@ class Application(ttk.Frame):
         ## CPU1 --------------------------------##
         self.cpu1 = ttk.Frame(relief=tk.RIDGE)
         self.cpu1.pack(fill=tk.X, expand=1)
-        
-        ### Current Frequency 
+
+        ### Current Frequency
         block = ttk.Frame(self.cpu1, relief=tk.GROOVE)
         block.pack(side=tk.LEFT, padx=5, pady=5)
 
@@ -101,6 +101,71 @@ class Application(ttk.Frame):
         self.c1curfreqVar = tk.StringVar()
         self.ec1curfreq = ttk.Entry(block, width=9, textvariable=self.c1curfreqVar)
         self.ec1curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+
+        ## CPU2 --------------------------------##
+        self.cpu2 = ttk.Frame(relief=tk.RIDGE)
+        self.cpu2.pack(fill=tk.X, expand=1)
+
+        ### Current Frequency
+        block = ttk.Frame(self.cpu2, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lc2curfreq = ttk.Label(block, text="CPU2 Current Freq:")
+        self.lc2curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.c2curfreqVar = tk.StringVar()
+        self.ec2curfreq = ttk.Entry(block, width=9, textvariable=self.c2curfreqVar)
+        self.ec2curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+
+        ## CPU3 --------------------------------##
+        self.cpu3 = ttk.Frame(relief=tk.RIDGE)
+        self.cpu3.pack(fill=tk.X, expand=1)
+
+        ### Current Frequency
+        block = ttk.Frame(self.cpu3, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lc3curfreq = ttk.Label(block, text="CPU3 Current Freq:")
+        self.lc3curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.c3curfreqVar = tk.StringVar()
+        self.ec3curfreq = ttk.Entry(block, width=9, textvariable=self.c3curfreqVar)
+        self.ec3curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+
+        ## CPU4 --------------------------------##
+        self.cpu4 = ttk.Frame(relief=tk.RIDGE)
+        self.cpu4.pack(fill=tk.X, expand=1)
+
+        ### Current Frequency
+        block = ttk.Frame(self.cpu4, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lc4curfreq = ttk.Label(block, text="CPU4 Current Freq:")
+        self.lc4curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.c4curfreqVar = tk.StringVar()
+        self.ec4curfreq = ttk.Entry(block, width=9, textvariable=self.c4curfreqVar)
+        self.ec4curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+
+        ## CPU5 --------------------------------##
+        self.cpu5 = ttk.Frame(relief=tk.RIDGE)
+        self.cpu5.pack(fill=tk.X, expand=1)
+
+        ### Current Frequency
+        block = ttk.Frame(self.cpu5, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lc5curfreq = ttk.Label(block, text="CPU5 Current Freq:")
+        self.lc5curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.c5curfreqVar = tk.StringVar()
+        self.ec5curfreq = ttk.Entry(block, width=9, textvariable=self.c5curfreqVar)
+        self.ec5curfreq.pack(side=tk.LEFT, padx=3, pady=3)
+
 
         self.start_updates()
 
@@ -124,6 +189,19 @@ class Application(ttk.Frame):
 
             with open('/sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq') as device:
                 self.c1curfreqVar.set(device.read().replace('\n', ''))
+
+            with open('/sys/devices/system/cpu/cpu2/cpufreq/scaling_cur_freq') as device:
+                self.c2curfreqVar.set(device.read().replace('\n', ''))
+
+            with open('/sys/devices/system/cpu/cpu3/cpufreq/scaling_cur_freq') as device:
+                self.c3curfreqVar.set(device.read().replace('\n', ''))
+
+            with open('/sys/devices/system/cpu/cpu4/cpufreq/scaling_cur_freq') as device:
+                self.c4curfreqVar.set(device.read().replace('\n', ''))
+
+            with open('/sys/devices/system/cpu/cpu5/cpufreq/scaling_cur_freq') as device:
+                self.c5curfreqVar.set(device.read().replace('\n', ''))
+
 
 
             sleep(1)
