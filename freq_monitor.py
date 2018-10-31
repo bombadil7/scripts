@@ -7,6 +7,7 @@ import tkinter as tk
 from tkinter import ttk 
 from time import sleep
 from threading import Thread
+from datetime import datetime
 
 
 class Application(ttk.Frame):
@@ -45,6 +46,29 @@ class Application(ttk.Frame):
         self.eonline = ttk.Entry(block, width=5, textvariable=self.onlineVar)
         self.eonline.pack(side=tk.LEFT, padx=3, pady=3)
 
+        ### Offline
+        block = ttk.Frame(self.info, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.loffline = ttk.Label(block, text="Offline Cores:")
+        self.loffline.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.offlineVar = tk.StringVar()
+        self.eoffline = ttk.Entry(block, width=5, textvariable=self.offlineVar)
+        self.eoffline.pack(side=tk.LEFT, padx=3, pady=3)
+
+        ### Time 
+        block = ttk.Frame(self.info, relief=tk.GROOVE)
+        block.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.lnow = ttk.Label(block, text="Time Stamp:")
+        self.lnow.pack(side=tk.LEFT, padx=3, pady=3)
+
+        self.nowVar = tk.StringVar()
+        self.enow = ttk.Entry(block, width=8, textvariable=self.nowVar)
+        self.enow.pack(side=tk.LEFT, padx=3, pady=3)
+
+
         self.start_updates()
 
     def start_updates(self):
@@ -57,6 +81,10 @@ class Application(ttk.Frame):
                 self.presentVar.set(device.read().replace('\n', ''))
             with open('/sys/devices/system/cpu/online') as device:
                 self.onlineVar.set(device.read().replace('\n', ''))
+            with open('/sys/devices/system/cpu/offline') as device:
+                self.offlineVar.set(device.read().replace('\n', ''))
+            now = datetime.now()
+            self.nowVar.set(now.strftime("%H:%M:%S"))
             sleep(1)
 
 
